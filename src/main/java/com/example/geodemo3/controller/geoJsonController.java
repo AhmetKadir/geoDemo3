@@ -18,9 +18,10 @@ public class geoJsonController {
         this.geoJsonService = geoJsonService;
     }
 
+    @CrossOrigin
     @PostMapping("/data")
     public ResponseEntity<MyPoints> postData(
-            @RequestBody DataRequest dataRequest ) {
+            @RequestBody DataRequest dataRequest) {
 
         return geoJsonService.getPointsInsidePolygon(dataRequest.getPoints(), dataRequest.getPolygon());
     }
