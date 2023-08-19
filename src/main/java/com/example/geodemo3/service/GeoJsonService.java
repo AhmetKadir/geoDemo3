@@ -1,11 +1,10 @@
 package com.example.geodemo3.service;
 
-import com.example.geodemo3.payload.Points;
-import com.example.geodemo3.payload.Polygon;
-import org.apache.coyote.Response;
+import com.example.geodemo3.payload.MyPoints;
+import com.example.geodemo3.payload.MyPolygon;
 import org.springframework.http.ResponseEntity;
 
 public interface GeoJsonService {
 
-    ResponseEntity<Points> getPointsInsidePolygon(Points points, Polygon polygon);
+    ResponseEntity<MyPoints> getPointsInsidePolygon(MyPoints points, MyPolygon myPolygon);
 }

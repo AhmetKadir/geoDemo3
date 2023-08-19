@@ -1,23 +1,23 @@
 package com.example.geodemo3.payload;
 
 public class DataRequest {
-    private Points points;
-    private Polygon polygon;
+    private MyPoints points;
+    private MyPolygon myPolygon;
 
-    public Points getPoints() {
+    public MyPoints getPoints() {
         return points;
     }
 
-    public void setPoints(Points points) {
+    public void setPoints(MyPoints points) {
         this.points = points;
     }
 
-    public Polygon getPolygon() {
-        return polygon;
+    public MyPolygon getPolygon() {
+        return myPolygon;
     }
 
-    public void setPolygon(Polygon polygon) {
-        this.polygon = polygon;
+    public void setPolygon(MyPolygon myPolygon) {
+        this.myPolygon = myPolygon;
     }
 }
 
