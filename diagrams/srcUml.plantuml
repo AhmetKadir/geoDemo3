@@ -1,0 +1,111 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class DataRequest {
+  + DataRequest(): 
+  - polygon: MyPolygon
+  - otherShape: OtherShape
+   polygon: MyPolygon
+   otherShape: OtherShape
+}
+class FeaturesItem {
+  + FeaturesItem(): 
+  - type: String
+  - geometry: Geometry
+  - layerID: Integer
+  - properties: Properties
+   layerID: Integer
+   type: String
+   geometry: Geometry
+   properties: Properties
+}
+class FeaturesItem {
+  + FeaturesItem(): 
+  - properties: Properties
+  - geometry: Geometry
+  - type: String
+   type: String
+   geometry: Geometry
+   properties: Properties
+}
+class GeoDemo3Application {
+  + GeoDemo3Application(): 
+  + main(String[]): void
+}
+class GeoDemo3ApplicationTests {
+  + GeoDemo3ApplicationTests(): 
+  ~ contextLoads(): void
+}
+interface GeoJsonService << interface >> {
+  + findShapesWithinPolygon(OtherShape, MyPolygon): ResponseEntity<OtherShape>
+}
+class GeoJsonServiceImpl {
+  + GeoJsonServiceImpl(): 
+  - getPolygonIfInside(OtherShape, List<Polygon>): OtherShape
+  + findShapesWithinPolygon(OtherShape, MyPolygon): ResponseEntity<OtherShape>
+  - getLineStringIfInside(OtherShape, List<Polygon>): OtherShape
+  - getPointsIfInside(OtherShape, List<Polygon>): OtherShape
+}
+class Geometry {
+  + Geometry(): 
+  - type: String
+  - coordinates: List<Object>
+   type: String
+   coordinates: List<Object>
+}
+class Geometry {
+  + Geometry(): 
+  - type: String
+  - coordinates: List<List<List<Object>>>
+   type: String
+   coordinates: List<List<List<Object>>>
+}
+class MyPolygon {
+  + MyPolygon(): 
+  - features: List<FeaturesItem>
+  - type: String
+   features: List<FeaturesItem>
+   type: String
+}
+class OtherShape {
+  + OtherShape(): 
+  - features: List<FeaturesItem>
+  - type: String
+   features: List<FeaturesItem>
+   type: String
+}
+class Properties {
+  + Properties(): 
+}
+class Properties {
+  + Properties(): 
+  - uniqueId: String
+   uniqueId: String
+   FId: Integer
+}
+class geoJsonController {
+  + geoJsonController(GeoJsonService): 
+  + postData(DataRequest): ResponseEntity<OtherShape>
+}
+
+DataRequest              "1" *-[#595959,plain]-> "polygon\n1" MyPolygon                
+DataRequest              "1" *-[#595959,plain]-> "otherShape\n1" OtherShape               
+FeaturesItem             "1" *-[#595959,plain]-> "geometry\n1" Geometry                 
+FeaturesItem             "1" *-[#595959,plain]-> "geometry\n1" Geometry                 
+FeaturesItem              +-[#820000,plain]-  MyPolygon                
+FeaturesItem              +-[#820000,plain]-  OtherShape               
+FeaturesItem             "1" *-[#595959,plain]-> "properties\n1" Properties               
+FeaturesItem             "1" *-[#595959,plain]-> "properties\n1" Properties               
+GeoJsonServiceImpl        -[#008200,dashed]-^  GeoJsonService           
+GeoJsonServiceImpl        -[#595959,dashed]->  OtherShape               : "«create»"
+Geometry                  +-[#820000,plain]-  MyPolygon                
+Geometry                  +-[#820000,plain]-  OtherShape               
+MyPolygon                "1" *-[#595959,plain]-> "features\n*" FeaturesItem             
+OtherShape               "1" *-[#595959,plain]-> "features\n*" FeaturesItem             
+Properties                +-[#820000,plain]-  MyPolygon                
+Properties                +-[#820000,plain]-  OtherShape               
+geoJsonController        "1" *-[#595959,plain]-> "geoJsonService\n1" GeoJsonService           
+@enduml

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-public class MyPoints {
+public class OtherShape {
     private List<FeaturesItem> features;
     private String type;
 

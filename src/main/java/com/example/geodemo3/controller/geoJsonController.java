@@ -1,7 +1,7 @@
 package com.example.geodemo3.controller;
 
 import com.example.geodemo3.payload.DataRequest;
-import com.example.geodemo3.payload.MyPoints;
+import com.example.geodemo3.payload.OtherShape;
 import com.example.geodemo3.service.GeoJsonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,10 +20,10 @@ public class geoJsonController {
 
     @CrossOrigin
     @PostMapping("/data")
-    public ResponseEntity<MyPoints> postData(
+    public ResponseEntity<OtherShape> postData(
             @RequestBody DataRequest dataRequest) throws Exception {
 
-        return geoJsonService.getPointsInsidePolygon(dataRequest.getPoints(), dataRequest.getPolygon());
+        return geoJsonService.findShapesWithinPolygon(dataRequest.getOtherShape(), dataRequest.getPolygon());
     }
 
 }
