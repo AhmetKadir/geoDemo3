@@ -21,7 +21,7 @@ public class geoJsonController {
     @CrossOrigin
     @PostMapping("/data")
     public ResponseEntity<MyPoints> postData(
-            @RequestBody DataRequest dataRequest) {
+            @RequestBody DataRequest dataRequest) throws Exception {
 
         return geoJsonService.getPointsInsidePolygon(dataRequest.getPoints(), dataRequest.getPolygon());
     }

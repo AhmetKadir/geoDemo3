@@ -6,5 +6,5 @@ import org.springframework.http.ResponseEntity;
 
 public interface GeoJsonService {
 
-    ResponseEntity<MyPoints> getPointsInsidePolygon(MyPoints points, MyPolygon myPolygon);
+    ResponseEntity<MyPoints> getPointsInsidePolygon(MyPoints points, MyPolygon myPolygon) throws Exception;
 }
